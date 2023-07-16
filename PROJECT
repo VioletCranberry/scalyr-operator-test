@@ -1,0 +1,29 @@
+domain: scalyr.com
+layout:
+- go.kubebuilder.io/v3
+multigroup: true
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}
+projectName: scalyr-k8s-operator
+repo: github.com/VioletCranberry/scalyr-operator-test
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: scalyr.com
+  group: alerts
+  kind: ScalyrAlertRule
+  path: github.com/VioletCranberry/scalyr-operator-test/apis/alerts/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: scalyr.com
+  group: alerts
+  kind: ScalyrAlertFile
+  path: github.com/VioletCranberry/scalyr-operator-test/apis/alerts/v1alpha1
+  version: v1alpha1
+version: "3"

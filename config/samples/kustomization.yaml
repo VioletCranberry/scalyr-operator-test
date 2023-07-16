@@ -1,0 +1,5 @@
+## Append samples you want in your CSV to this file as resources ##
+resources:
+- alerts_v1alpha1_scalyralertrule.yaml
+- alerts_v1alpha1_scalyralertfile.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

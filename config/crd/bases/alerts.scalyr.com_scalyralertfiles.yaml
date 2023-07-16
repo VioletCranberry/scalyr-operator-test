@@ -1,0 +1,93 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.10.0
+  creationTimestamp: null
+  name: scalyralertfiles.alerts.scalyr.com
+spec:
+  group: alerts.scalyr.com
+  names:
+    kind: ScalyrAlertFile
+    listKind: ScalyrAlertFileList
+    plural: scalyralertfiles
+    singular: scalyralertfile
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: ScalyrAlertFile is the Schema for the scalyralertfiles API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ScalyrAlertFileSpec defines the desired state of ScalyrAlertFile
+            properties:
+              alertAddress:
+                type: string
+              alerts:
+                items:
+                  properties:
+                    alertAddress:
+                      type: string
+                    description:
+                      type: string
+                    gracePeriodMinutes:
+                      default: 0
+                      format: int32
+                      minimum: 0
+                      type: integer
+                    renotifyPeriodMinutes:
+                      default: 0
+                      format: int32
+                      minimum: 0
+                      type: integer
+                    resolutionDelayMinutes:
+                      default: 0
+                      format: int32
+                      maximum: 9999
+                      minimum: 0
+                      type: integer
+                    silences:
+                      items:
+                        description: ScalyrAlertRuleSpec defines the desired state
+                          of ScalyrAlertRule
+                        properties:
+                          condition:
+                            type: string
+                          silenceComment:
+                            type: string
+                          silenceUntil:
+                            type: string
+                        type: object
+                      type: array
+                    trigger:
+                      type: string
+                  required:
+                  - trigger
+                  type: object
+                type: array
+            type: object
+          status:
+            description: ScalyrAlertFileStatus defines the observed state of ScalyrAlertFile
+            properties:
+              Synchronised:
+                type: boolean
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

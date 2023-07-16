@@ -1,0 +1,25 @@
+apiVersion: alerts.scalyr.com/v1alpha1
+kind: ScalyrAlertFile
+metadata:
+  labels:
+    app.kubernetes.io/name: scalyralertfile
+    app.kubernetes.io/instance: scalyralertfile-sample
+    app.kubernetes.io/part-of: scalyr-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: scalyr-k8s-operator
+  name: scalyralertfile-sample
+spec:
+  alertAddress: "test@test.com"
+  alerts:
+    - trigger: "count:10 minutes(test) > 0"
+      description: "sample alert description"
+      alertAddress: "test@test.com"
+      gracePeriodMinutes: 0
+      renotifyPeriodMinutes: 1
+      resolutionDelayMinutes: 2
+    - trigger: "count:15 minutes(test) > 0"
+      description: "sample alert description"
+      alertAddress: "test@test.com"
+      gracePeriodMinutes: 0
+      renotifyPeriodMinutes: 1
+      resolutionDelayMinutes: 2

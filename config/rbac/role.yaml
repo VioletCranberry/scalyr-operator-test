@@ -1,0 +1,59 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - alerts.scalyr.com
+  resources:
+  - scalyralertfiles
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - alerts.scalyr.com
+  resources:
+  - scalyralertfiles/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - alerts.scalyr.com
+  resources:
+  - scalyralertfiles/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - alerts.scalyr.com
+  resources:
+  - scalyralertrules
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - alerts.scalyr.com
+  resources:
+  - scalyralertrules/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - alerts.scalyr.com
+  resources:
+  - scalyralertrules/status
+  verbs:
+  - get
+  - patch
+  - update

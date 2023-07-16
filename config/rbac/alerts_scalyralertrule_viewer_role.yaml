@@ -1,0 +1,27 @@
+# permissions for end users to view scalyralertrules.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: scalyralertrule-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: scalyr-k8s-operator
+    app.kubernetes.io/part-of: scalyr-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: scalyralertrule-viewer-role
+rules:
+- apiGroups:
+  - alerts.scalyr.com
+  resources:
+  - scalyralertrules
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - alerts.scalyr.com
+  resources:
+  - scalyralertrules/status
+  verbs:
+  - get

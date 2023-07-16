@@ -1,0 +1,17 @@
+apiVersion: alerts.scalyr.com/v1alpha1
+kind: ScalyrAlertRule
+metadata:
+  labels:
+    app.kubernetes.io/name: scalyralertrule
+    app.kubernetes.io/instance: scalyralertrule-sample
+    app.kubernetes.io/part-of: scalyr-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: scalyr-k8s-operator
+  name: scalyralertrule-sample-1
+spec:
+  trigger: "count:5 minutes(test) > 0"
+  description: "sample alert description"
+  alertAddress: "test@test.com"
+  gracePeriodMinutes: 0
+  renotifyPeriodMinutes: 1
+  resolutionDelayMinutes: 2
